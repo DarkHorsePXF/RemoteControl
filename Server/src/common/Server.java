@@ -43,7 +43,7 @@ public class Server {
             try {
                 Socket socket=serverSocket.accept();
                 System.out.println("连接成功！");
-//                executor.execute(new SocketHandler(socket));
+                executor.execute(new SocketHandler(socket));
             } catch (IOException e) {
                 e.printStackTrace();
             }
