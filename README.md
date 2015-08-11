@@ -5,11 +5,11 @@
     * Server: Code for PC Server,which you can run after packeging it as a jar file.
 
 ## Guide:
-    1.run the server;
-    2.insert the ip on your app;
-    3.click "shotdown" on your app.
+    1.Run the server;
+    2.Insert the ip on your app;
+    3.Click "shotdown" on your app.
     
-    note:the jar file locates at Server/out/artifacts/Server_jar/
+    Note:The jar file locates at Server/out/artifacts/Server_jar/
 
 ***
 
