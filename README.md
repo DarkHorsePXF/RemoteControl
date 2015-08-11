@@ -7,7 +7,7 @@
 ## Guide:
     1.Run the server;
     2.Insert the ip on your app;
-    3.Click "shotdown" on your app.
+    3.Click "shutdown" on your app.
     
     Note:The jar file locates at Server/out/artifacts/Server_jar/
 
