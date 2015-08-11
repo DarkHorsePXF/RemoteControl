@@ -2,6 +2,7 @@ package handler;
 
 import common.CMD;
 import common.Controller;
+import common.RequestCode;
 import net.sf.json.JSONObject;
 
 import java.io.DataInputStream;
@@ -14,13 +15,14 @@ import java.net.Socket;
 public class SocketHandler implements Runnable {
     private Socket mSocket;
 
+
     public SocketHandler(Socket socket){
         this.mSocket=socket;
     }
 
     @Override
     public void run() {
-        System.out.println("正在处理请求。。。");
+        System.out.println("handling socket");
         DataInputStream dis=null;
         StringBuffer sb=new StringBuffer();
         try {
@@ -31,10 +33,10 @@ public class SocketHandler implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("客户端数据：");
+        System.out.println("the data client request: ");
         String string=sb.toString();
         System.out.println(string);
-        if (string.compareTo(CMD.SHUTDOWN)==0){
+        if (string.compareTo(RequestCode.SHUTDOWN)==0){
             Controller.getInstance().cmdShutdown();
         }
     }

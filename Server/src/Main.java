@@ -1,4 +1,3 @@
-import common.Server;
 import ui.MainUI;
 
 import java.net.InetAddress;
@@ -14,7 +13,7 @@ public class Main {
             e.printStackTrace();
         }
         String ip=address.getHostAddress().toString();
-        System.out.println("服务器ip地址为："+ip);
+        System.out.println("The ip address of server is :"+ ip);
 
         Server server= Server.getInstance();
         MainUI ui=new MainUI(ip);

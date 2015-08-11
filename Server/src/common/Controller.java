@@ -9,6 +9,8 @@ public class Controller {
     private static Controller instance=new Controller();
     private Runtime runtime;
 
+
+
     private Controller(){
         runtime=Runtime.getRuntime();
     }
@@ -19,7 +21,27 @@ public class Controller {
 
     public boolean cmdShutdown(){
         try {
-            runtime.exec("shutdown -s -t 10");
+            runtime.exec(CMD.SHUTDOWN_IN_10s);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean cmdShutdownIn2hours(){
+        try {
+            runtime.exec(CMD.SHUTDOWN_IN_2h);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean cmdCancelShutDown(){
+        try {
+            runtime.exec(CMD.CANCEL_SHUTDOWN);
             return true;
         } catch (IOException e) {
             e.printStackTrace();

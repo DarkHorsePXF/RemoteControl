@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,9 +54,11 @@ public class MainActivity extends ActionBarActivity {
                 case LINK_SHUTDOWN_SUCCESS_MSG:{
                     ToastUtil.shortToast(mContext, "关机成功!");
                     insertIP2DataBase(db, ip);
+                    break;
                 }
                 case LINK_ERROR_MSG:{
-                    ToastUtil.shortToast(mContext,"ip输入或网络连接有误！");
+                    ToastUtil.shortToast(mContext,"网络连接有误！");
+                    break;
                 }
             }
             super.handleMessage(msg);
@@ -72,7 +75,7 @@ public class MainActivity extends ActionBarActivity {
                     "\')";
             db.execSQL(SQL_INSERT_IP);
         } catch (SQLException e) {
-            ToastUtil.shortToast(mContext,"该IP地址已保存");
+            Log.v("sqlite","ip地址已保存");
         }
     }
 
@@ -103,6 +106,7 @@ public class MainActivity extends ActionBarActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,R.layout.layout_ip_list,R.id.ip_tv,items);
         spIP.setAdapter(adapter);
+        spIP.setClickable(false);
         spIP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -168,14 +172,20 @@ public class MainActivity extends ActionBarActivity {
             try {
                 netContent=new NetContent(ip);
                 socket=new Socket(netContent.getHost(), netContent.getPort());
+
+                if (!socket.isConnected()||socket.isClosed()||!socket.isBound()){
+                    mHandler.sendEmptyMessage(LINK_ERROR_MSG);
+                    return;
+                }
+
+                socket.setSoTimeout(5*1000);
                 mHandler.sendEmptyMessage(LINK_SHUTDOWN_SUCCESS_MSG);
                 DataOutputStream dos=new DataOutputStream(socket.getOutputStream());
                 dos.writeUTF(input);
                 dos.flush();
                 dos.close();
-
             } catch (IOException e) {
-                e.printStackTrace();
+                mHandler.sendEmptyMessage(LINK_ERROR_MSG);
             }
         }
     }
