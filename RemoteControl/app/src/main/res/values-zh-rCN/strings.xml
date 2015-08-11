@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">远程控制</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">设置</string>
+
+    <string name="input_ip">请输入ip地址</string>
+    <string name="remote_shutdown">远程关机</string>
+    <string name="shutdown">shutdown</string>
+    <string name="shutdown_success">关机成功！</string>
+    <string name="connect_error">网络连接失败！</string>
+    <string name="ip_exists">ip地址已保存</string>
+</resources>

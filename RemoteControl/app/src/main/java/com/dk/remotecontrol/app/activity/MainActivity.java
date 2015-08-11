@@ -52,12 +52,12 @@ public class MainActivity extends ActionBarActivity {
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case LINK_SHUTDOWN_SUCCESS_MSG:{
-                    ToastUtil.shortToast(mContext, "关机成功!");
+                    ToastUtil.shortToast(mContext, getResources().getString(R.string.shutdown_success));
                     insertIP2DataBase(db, ip);
                     break;
                 }
                 case LINK_ERROR_MSG:{
-                    ToastUtil.shortToast(mContext,"网络连接有误！");
+                    ToastUtil.shortToast(mContext,getResources().getString(R.string.connect_error));
                     break;
                 }
             }
@@ -75,7 +75,7 @@ public class MainActivity extends ActionBarActivity {
                     "\')";
             db.execSQL(SQL_INSERT_IP);
         } catch (SQLException e) {
-            Log.v("sqlite","ip地址已保存");
+            Log.v("sqlite",getResources().getString(R.string.ip_exists));
         }
     }
 

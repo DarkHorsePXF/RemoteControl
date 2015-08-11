@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">RemoteControl</string>
+    <string name="app_name">Remote Control</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="input_ip">Please input the ip</string>
+    <string name="remote_shutdown">Remote shutdown</string>
+    <string name="shutdown">shutdown</string>
+    <string name="shutdown_success">Shutdown success!</string>
+    <string name="connect_error">Connect error!</string>
+    <string name="ip_exists">ip exists!</string>
 </resources>

@@ -13,26 +13,27 @@
                   android:gravity="center"
             >
         <TextView
-                android:text="遥控关机"
+                android:text="@string/remote_shutdown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/shutdown_txt_tv"
-                android:textSize="40sp"
-                android:layout_margin="10dp"/>
+                android:textSize="30sp"
+                android:layout_margin="40dp"
+                />
         <Spinner android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:id="@+id/select_ip_sp">
 
         </Spinner>
         <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:textSize="30sp"
-                  android:hint="请输入ip地址"
+                  android:hint="@string/input_ip"
                   android:id="@+id/host_input_et"
                   android:layout_margin="5dp"
                   android:layout_centerInParent="true"/>
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:id="@+id/shutdown_btn"
-                android:text="远程关机"
+                android:text="@string/shutdown"
                 android:textSize="20sp"
                 android:padding="5dp"
                 android:background="@drawable/bg_btn"/>
